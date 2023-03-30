@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_Animation2.html</title>
+    <style>
+        .move{
+            animation: moveAni 3s 1 ease-out;
+        }
+
+        @keyframes moveAni {
+            0%{
+                transform: translateX(0px) rotate(0deg);
+            }
+            100%{
+                transform: translateX(500px) rotate(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>animation 테스트2</h3>
+        <button id="startBtn">시작</button>
+        <br>
+        <img src="images/kim1.png" id="kim">
+    </div>
+    <!-- jquery 로딩 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+            crossorigin="anonymous"></script>
+
+    <script>
+        //시작 버튼을 누르면 김구라 이미지에 moveAni 라는 키프레임 적용하기
+        document.querySelector("#startBtn").addEventListener("click", () => {
+            document.querySelector("#kim").classList.add("move");
+        });
+
+        document.querySelector("#kim").addEventListener("animationend", () => {
+            document.querySelector("#kim").classList.remove("move");
+        });
+
+        $("#startBtn").on("click", () => {
+            $("#kim").addClass("move");
+        });
+
+        $("#kim").on("animationend", () => {
+            $("#kim").removeClass("move");
+        });
+    </script>
+</body>
+</html>
